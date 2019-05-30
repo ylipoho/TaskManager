@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="pleasework.View.SettingsPage">
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <Label Text="Text size" FontSize="{DynamicResource FontSize}"/>
+            <Stepper x:Name="fontSizeStepper" Minimum="5" Maximum="25" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+            <Label x:Name="fontSizeValue" Text="{DynamicResource FontSize}"/>
+
+            <Label Text="night mode" FontSize="{DynamicResource FontSize}"/>
+            <Switch IsToggled="false" />
+            
+            <Label Text="sound on" FontSize="{DynamicResource FontSize}"/>
+            <Switch IsToggled="true" />
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
