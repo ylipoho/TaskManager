@@ -22,16 +22,14 @@ namespace pleasework.View
 
         private void Add_Clicked(object sender, EventArgs e)
         {
-            Role userRole;
-            
             if (password.Text == password2.Text && login.Text != string.Empty && password.Text != string.Empty && role.SelectedItem != null &&
-                Enum.TryParse<Role>(role.SelectedIndex.ToString(), out userRole))
+                Enum.TryParse<Role>(role.SelectedIndex.ToString(), out Role userRole))
             {
                 User user = new User()
                 {
                     Login = login.Text,
                     Password = password.Text,
-                    UserRole = userRole
+                    UserRole = (Role)userRole + 1
                 };
                 try
                 {
@@ -42,11 +40,11 @@ namespace pleasework.View
                 {
                     DisplayAlert("error", ex.Message, "understand");
                 }
-                
+
             }
             else
             {
-                 DisplayAlert("error", "invalid input", "understand");
+                DisplayAlert("error", "invalid input", "understand");
             }
         }
     }

@@ -12,7 +12,7 @@ namespace pleasework.View
         {
             InitializeComponent();
                         
-            Children.Add(new TasklistPage() { Title = "Tasks" });
+            Children.Add(new TasklistPage(sessionService) { Title = "Tasks" });
 
             Role role = sessionService.sessionUser.UserRole;
             

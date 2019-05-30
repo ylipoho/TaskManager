@@ -11,6 +11,7 @@
             <Picker x:Name="role" Title="--role--">
                 <Picker.Items>
                     <!-- admin нельзя-->
+                    
                     <x:String>Manager</x:String>
                     <x:String>Developer</x:String>
                     <x:String>Tester</x:String>

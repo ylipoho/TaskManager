@@ -13,31 +13,31 @@ namespace pleasework.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TasklistPage : ContentPage
 	{
+        public SessionService currentSessionService;
 
-        public List<pleasework.Models.Task> Tasks { get; set; }
+        public List<Models.Task> Tasks { get; set; }
 
-		public TasklistPage ()
+		public TasklistPage (SessionService sessionService)
 		{
             InitializeComponent();
+
+            this.currentSessionService = sessionService;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
-            //tasksListView = new ListView();
-            //tasksListView.ItemsSource = Tasks = DatabaseService.GetAllTasks().Result;
-            
-        }
-        
-        private void DeleteTaskButton_Clicked(object sender, EventArgs e)
-        {
-            DisplayAlert("info", "delete button tapped", "understand");
-        }
+            Tasks = await DatabaseService.GetAllTasks();
+            TaskListView.ItemsSource = Tasks;
 
-        private void TasksListView_ItemTapped(object sender, ItemTappedEventArgs e)
+            // фильтрацию
+
+        }
+             
+        private void TaskListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            DisplayAlert("info", "item tapped", "understand");
+            Navigation.PushModalAsync(new TaskPage(e.Item));
         }
     }
 }

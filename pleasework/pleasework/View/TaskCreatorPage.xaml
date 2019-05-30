@@ -15,7 +15,13 @@
             <Entry 
                 x:Name="name"
                 HorizontalOptions="FillAndExpand"
-                Placeholder="Name"
+                Placeholder="Title"
+                FontSize="{DynamicResource AppFontSize}" />
+
+            <Entry 
+                x:Name="description"
+                HorizontalOptions="FillAndExpand"
+                Placeholder="Description"
                 FontSize="{DynamicResource AppFontSize}" />
 
             <Picker 

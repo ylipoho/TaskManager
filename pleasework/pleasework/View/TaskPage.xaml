@@ -11,6 +11,24 @@
             Padding="60, 20"
             VerticalOptions="Center">
 
+            <Label x:Name="title"/>
+
+            <Label x:Name="description"/>
+
+            <Label x:Name="priority"/>
+
+            <Label x:Name="deadline"/>
+
+            <Label x:Name="creator"/>
+
+            <Label x:Name="performer"/>
+
+            <Label x:Name="forRole"/>
+
+            <Label x:Name="status"/>
+
+            <Button BackgroundColor="Maroon" Text="delete" Clicked="Button_Clicked"/>
+
         </StackLayout>
     </ScrollView>
 </ContentPage>

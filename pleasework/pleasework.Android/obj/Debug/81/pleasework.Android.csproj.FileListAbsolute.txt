@@ -214,3 +214,8 @@ C:\Users\admin\Documents\GitHub\pleasework\pleasework\pleasework.Android\obj\Deb
 C:\Users\admin\Documents\GitHub\pleasework\pleasework\pleasework.Android\obj\Debug\81\linksrc\FormsViewGroup.dll.mdb
 C:\Users\admin\Documents\GitHub\pleasework\pleasework\pleasework.Android\obj\Debug\81\linksrc\pleasework.dll.mdb
 C:\Users\admin\Documents\GitHub\pleasework\pleasework\pleasework.Android\obj\Debug\81\linksrc\Xamarin.Forms.Platform.Android.dll.mdb
+C:\Users\admin\Documents\GitHub\pleasework\pleasework\pleasework\bin\Debug\netstandard2.0\pleasework.dll
+C:\Users\admin\Documents\GitHub\pleasework\pleasework\pleasework.Android\bin\Debug\pleasework.dll.mdb
+C:\Users\admin\Documents\GitHub\pleasework\pleasework\pleasework.Android\obj\Debug\81\linksrc\FormsViewGroup.dll.mdb
+C:\Users\admin\Documents\GitHub\pleasework\pleasework\pleasework.Android\obj\Debug\81\linksrc\pleasework.dll.mdb
+C:\Users\admin\Documents\GitHub\pleasework\pleasework\pleasework.Android\obj\Debug\81\linksrc\Xamarin.Forms.Platform.Android.dll.mdb

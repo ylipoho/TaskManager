@@ -5,7 +5,34 @@
     
     <ContentPage.Content>
         <ScrollView>
-           
+            <ListView 
+                x:Name="TaskListView"
+                HasUnevenRows="True"
+                Margin="10"
+                ItemsSource="{Binding Tasks}"
+                ItemTapped="TaskListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical">
+                                <Label 
+                                    Text="{Binding Title}"
+                                    FontSize="Medium">
+                                </Label>
+
+                                <Label 
+                                    Text="{Binding Deadline}" >
+                                </Label>
+
+                                <Label 
+                                    Text="{Binding IsDone, StringFormat='done:'}" >
+                                </Label>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

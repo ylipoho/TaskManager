@@ -10,7 +10,7 @@ namespace pleasework.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TaskCreatorPage : ContentPage
 	{
-        public SessionService sessionService;
+        public SessionService currentSessionService;
         public List<User> Users { get; set; }
 
 
@@ -18,24 +18,26 @@ namespace pleasework.View
 		public TaskCreatorPage (SessionService sessionService)
 		{
 			InitializeComponent ();
+            this.currentSessionService = sessionService;
 		}
         
         private void Button_Clicked(object sender, EventArgs e)
         {
             if (name.Text != string.Empty)
             {
-                var date = datePicker.Date;
-                var time = timePicker.Time;
-
-                Models.Task task = new Models.Task
-                {
-                    Title = name.Text,
-                    Deadline = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds),
-                    Creator = sessionService.sessionUser.Login
-                };
-
                 try
                 {
+                    var date = datePicker.Date;
+                    var time = timePicker.Time;
+
+                    Models.Task task = new Models.Task
+                    {
+                        Title = name.Text,
+                        Description = description.Text,
+                        Deadline = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds),
+                        Creator = currentSessionService.sessionUser.Login
+                    };
+
                     if (performerSwitch.IsToggled) // true - for user, false - for role
                     {
                         task.Performer = userPerformer.SelectedItem.ToString();
