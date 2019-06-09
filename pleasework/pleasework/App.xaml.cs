@@ -12,10 +12,13 @@ namespace pleasework
             InitializeComponent();
 
             MainPage = new MainPage();
+
         }
 
         protected override void OnStart()
         {
+            ResourceDictionary dictionary = new ResourceDictionary();
+            dictionary.Add("fontSize", 15);
             // Handle when your app starts
         }
 

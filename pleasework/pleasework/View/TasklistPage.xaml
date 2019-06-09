@@ -1,38 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="pleasework.View.TasklistPage">
-    
-    <ContentPage.Content>
-        <ScrollView>
-            <ListView 
+             x:Class="pleasework.View.TasklistPage"
+             BackgroundColor="{DynamicResource AppBackgroundColor}">
+
+    <StackLayout VerticalOptions="Center">
+        <Picker x:Name="filterPicker" SelectedItem="by priority" SelectedIndexChanged="FilterPicker_SelectedIndexChanged">
+            <Picker.Items >
+                <x:String>all by priority</x:String>
+                <x:String>only done</x:String>
+                <x:String>only unfinished</x:String>
+                <x:String>only critical</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <ListView 
                 x:Name="TaskListView"
                 HasUnevenRows="True"
                 Margin="10"
                 ItemsSource="{Binding Tasks}"
                 ItemTapped="TaskListView_ItemTapped">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Vertical">
-                                <Label 
-                                    Text="{Binding Title}"
-                                    FontSize="Medium">
-                                </Label>
 
-                                <Label 
-                                    Text="{Binding Deadline}" >
-                                </Label>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" BackgroundColor= "{Binding bgColor}" >
+                            
+                            <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="{DynamicResource AppFontSize}"/>
 
-                                <Label 
-                                    Text="{Binding IsDone, StringFormat='done:'}" >
-                                </Label>
+                            <Label Text="{Binding Deadline}" FontSize="{DynamicResource AppFontSize}"/>
 
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </ScrollView>
-    </ContentPage.Content>
+                            <Label Text="{Binding Priority}" FontSize="{DynamicResource AppFontSize}"/>
+
+                            <Label Text="{Binding IsDone, StringFormat='done: {0}'}" FontSize="{DynamicResource AppFontSize}" />
+
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

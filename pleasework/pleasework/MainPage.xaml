@@ -2,14 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:pleasework"
-             x:Class="pleasework.MainPage">
+             x:Class="pleasework.MainPage"
+             BackgroundColor="{DynamicResource AppBackgroundColor}">
 
     <StackLayout VerticalOptions="Center">
 
-        <Entry x:Name="loginEntry" Placeholder="login" ></Entry>
-        <Entry x:Name="passwordEntry" Placeholder="password"></Entry>
-        <Button x:Name="registrationButton" Text="Registration" Clicked="RegistrationButton_Clicked"></Button>
-        <Button x:Name="autorizationButton" Text="Autorization" Clicked="AutorizationButton_ClickedAsync"></Button>
+        <Entry x:Name="loginEntry" Placeholder="login" FontSize="{DynamicResource AppFontSize}" ></Entry>
+        <Entry x:Name="passwordEntry" Placeholder="password" IsPassword="True" FontSize="{DynamicResource AppFontSize}"></Entry>
+        <Button x:Name="autorizationButton" Text="Autorization" Clicked="AutorizationButton_ClickedAsync" BackgroundColor="DarkSeaGreen" 
+                                                                                    FontSize="{DynamicResource AppFontSize}"></Button>
+        <Button x:Name="registrationButton" Text="Registration" Clicked="RegistrationButton_Clicked" BackgroundColor="DarkSeaGreen"
+                                                                                    FontSize="{DynamicResource AppFontSize}"></Button>
 
     </StackLayout>
 

@@ -13,7 +13,7 @@ namespace pleasework.Models
 
         public string Priority { get; set; } 
 
-        public string IsDone { get; set; } // true - done
+        public bool IsDone { get; set; } // true - done
 
         public DateTime Deadline { get; set; }
 

@@ -1,19 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="pleasework.View.SettingsPage">
+             x:Class="pleasework.View.SettingsPage"
+             BackgroundColor="{DynamicResource AppBackgroundColor}">
     <ContentPage.Content>
         <StackLayout>
-            
-            <Label Text="Text size" FontSize="{DynamicResource FontSize}"/>
-            <Stepper x:Name="fontSizeStepper" Minimum="5" Maximum="25" Increment="1" ValueChanged="Stepper_ValueChanged"/>
-            <Label x:Name="fontSizeValue" Text="{DynamicResource FontSize}"/>
 
-            <Label Text="night mode" FontSize="{DynamicResource FontSize}"/>
-            <Switch IsToggled="false" />
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Text size" FontSize="{DynamicResource AppFontSize}"/>
+                <Label x:Name="fontSizeValue" Text="{Binding fontValue}" HorizontalOptions="Center" FontSize="{DynamicResource AppFontSize}"/>
+            </StackLayout>
             
-            <Label Text="sound on" FontSize="{DynamicResource FontSize}"/>
-            <Switch IsToggled="true" />
+            <Stepper x:Name="fontSizeStepper" Value="15" Minimum="5" Maximum="40" Increment="1" ValueChanged="Stepper_ValueChanged"
+                     HorizontalOptions="Center"/>
+            
+            <StackLayout Orientation="Horizontal">
+            <Label   Text="Night mode" FontSize="{DynamicResource AppFontSize}"/>
+            <Switch x:Name="colorSwitch" IsToggled="false" Toggled="ColorSwitch_Toggled"/>
+            </StackLayout>
             
         </StackLayout>
     </ContentPage.Content>

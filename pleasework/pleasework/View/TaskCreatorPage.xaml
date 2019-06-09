@@ -2,15 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="pleasework.View.TaskCreatorPage"
-             BackgroundColor="Azure">
+             BackgroundColor="{DynamicResource AppBackgroundColor}">
+    
     <ScrollView
         HorizontalOptions="FillAndExpand"
         VerticalOptions="FillAndExpand"
         Orientation="Vertical">
 
-        <StackLayout
-            Padding="60, 20"
-            VerticalOptions="Center">
+        <StackLayout VerticalOptions="Center">
 
             <Entry 
                 x:Name="name"
@@ -25,6 +24,7 @@
                 FontSize="{DynamicResource AppFontSize}" />
 
             <Picker 
+                FontSize="{DynamicResource AppFontSize}"
                 x:Name="priority"
                 HorizontalOptions="FillAndExpand"
                 Title="-priority-">
@@ -32,48 +32,50 @@
                     <x:String>low</x:String>
                     <x:String>medium</x:String>
                     <x:String>high</x:String>
-                    <x:String>criticaaaal</x:String>
+                    <x:String>criticaaal</x:String>
                 </Picker.Items>
             </Picker>
-            
-            <Label Text="Deadline:"/>
+
+            <Label Text="Deadline:" FontSize="{DynamicResource AppFontSize}" />
             <DatePicker 
-                x:Name="datePicker"/>
+                x:Name="datePicker" FontSize="{DynamicResource AppFontSize}"/>
             <TimePicker
-                x:Name="timePicker"/>
-            
-            <Label Text="for role OR for user"/>
-            <Switch x:Name="performerSwitch" Toggled="Switch_Toggled"/>
+                x:Name="timePicker" FontSize="{DynamicResource AppFontSize}"/>
+
+            <Label Text="for role OR for user" FontSize="{DynamicResource AppFontSize}"/>
+            <Switch x:Name="performerSwitch" Toggled="Switch_Toggled" />
             
             <Picker 
+                FontSize="{DynamicResource AppFontSize}"
                 x:Name="rolePerformer"
                 HorizontalOptions="FillAndExpand"
                 Title="For:"
                 IsEnabled="true">
                 <Picker.Items>
-                    <x:String>designer</x:String>
                     <x:String>developer</x:String>
                     <x:String>manager</x:String>
                     <x:String>tester</x:String>
+                    <x:String>designer</x:String>
                 </Picker.Items>
             </Picker>
 
             <Picker 
+                FontSize="{DynamicResource AppFontSize}"
                 x:Name="userPerformer"
                 HorizontalOptions="FillAndExpand"
                 Title="For:"
-                IsEnabled="False">
-                <Picker.Items>
-                    <x:String>all</x:String>
-                    <x:String>users</x:String>
-                    <x:String>list</x:String>
-                </Picker.Items>
+                IsEnabled="False"
+                ItemsSource="{Binding Users}"
+                 SelectedIndexChanged="UserPerformer_SelectedIndexChanged"
+                >
             </Picker>
 
             <Button 
+                FontSize="{DynamicResource AppFontSize}"
                 HorizontalOptions="FillAndExpand"
                 Text="Add task"
                 Clicked="Button_Clicked"
+                BackgroundColor="SeaGreen"                
                 />
         </StackLayout>
     </ScrollView>

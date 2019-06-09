@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="pleasework.View.UserCreatorPage">
+             x:Class="pleasework.View.UserCreatorPage"
+             BackgroundColor="{DynamicResource AppBackgroundColor}">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout VerticalOptions="Center">
 
-            <Entry x:Name="login" Placeholder="login"></Entry>
-            <Entry x:Name="password" Placeholder="password"></Entry>
-            <Entry x:Name="password2" Placeholder="repeat password"></Entry>
-            <Picker x:Name="role" >
+            <Entry x:Name="login" FontSize="{DynamicResource AppFontSize}" Placeholder="login"></Entry>
+            <Entry x:Name="password" FontSize="{DynamicResource AppFontSize}" Placeholder="password"></Entry>
+            <Entry x:Name="password2" FontSize="{DynamicResource AppFontSize}" Placeholder="repeat password"></Entry>
+            <Picker x:Name="role" FontSize="{DynamicResource AppFontSize}" >
                 <Picker.Items>
                     <x:String>Admin</x:String>
                     <x:String>Manager</x:String>
@@ -17,7 +18,7 @@
                     <x:String>Designer</x:String>
                 </Picker.Items>
             </Picker>
-            <Button x:Name="Add" Text="Add user" Clicked="Add_Clicked"></Button>
+            <Button x:Name="Add" FontSize="{DynamicResource AppFontSize}" Text="Add user" Clicked="Add_Clicked" BackgroundColor="SeaGreen"></Button>
             
         </StackLayout>
     </ContentPage.Content>

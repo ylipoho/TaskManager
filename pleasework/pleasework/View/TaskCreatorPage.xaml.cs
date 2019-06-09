@@ -11,16 +11,30 @@ namespace pleasework.View
 	public partial class TaskCreatorPage : ContentPage
 	{
         public SessionService currentSessionService;
-        public List<User> Users { get; set; }
+        public List<string> Users { get; set; } = new List<string>();
 
 
 
 		public TaskCreatorPage (SessionService sessionService)
 		{
 			InitializeComponent ();
-            this.currentSessionService = sessionService;
-		}
-        
+            this.currentSessionService = sessionService;            
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            var users = await DatabaseService.GetAllUsers();
+            
+            foreach (var user in users)
+            {
+                Users.Add(user.Login);
+            }
+
+            userPerformer.ItemsSource = Users;
+        }
+
         private void Button_Clicked(object sender, EventArgs e)
         {
             if (name.Text != string.Empty)
@@ -35,7 +49,9 @@ namespace pleasework.View
                         Title = name.Text,
                         Description = description.Text,
                         Deadline = new DateTime(date.Year, date.Month, date.Day, time.Hours, time.Minutes, time.Seconds),
-                        Creator = currentSessionService.sessionUser.Login
+                        Creator = currentSessionService.sessionUser.Login,
+                        IsDone = false,
+                        Priority = priority.SelectedItem.ToString()
                     };
 
                     if (performerSwitch.IsToggled) // true - for user, false - for role
@@ -48,6 +64,7 @@ namespace pleasework.View
                     }
                     
                     DatabaseService.AddTask(task);
+                    DisplayAlert("info", "successfuly added", "understand") ;
                 }
                 catch (Exception ex)
                 {
@@ -71,6 +88,11 @@ namespace pleasework.View
                 userPerformer.IsEnabled = false;
                 userPerformer.SelectedItem = "";
             }
+        }
+
+        private void UserPerformer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DisplayAlert("info", "ok", "ok");
         }
     }
 }

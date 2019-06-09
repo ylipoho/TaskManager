@@ -1,27 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="pleasework.View.RegistrationPage">
-    <ContentPage.Content>
-        <StackLayout>
+             x:Class="pleasework.View.RegistrationPage"
+             BackgroundColor="{DynamicResource AppBackgroundColor}">
 
-            <Entry x:Name="login" Placeholder="login"></Entry>
-            <Entry x:Name="password" Placeholder="password"></Entry>
-            <Entry x:Name="password2" Placeholder="repeat password"></Entry>
-            <Picker x:Name="role" Title="--role--">
-                <Picker.Items>
-                    <!-- admin нельзя-->
-                    
-                    <x:String>Manager</x:String>
-                    <x:String>Developer</x:String>
-                    <x:String>Tester</x:String>
-                    <x:String>Designer</x:String>
-                </Picker.Items>
-            </Picker>
-            <Button x:Name="Add" Text="Add user" Clicked="Add_Clicked"></Button>
-            
+    <StackLayout VerticalOptions="Center">
 
+        <Entry x:Name="login" Placeholder="login" FontSize="{DynamicResource AppFontSize}"></Entry>
+        <Entry x:Name="password" Placeholder="password" FontSize="{DynamicResource AppFontSize}"></Entry>
+        <Entry x:Name="password2" Placeholder="repeat password" FontSize="{DynamicResource AppFontSize}"></Entry>
+        <Picker x:Name="role" Title="--role--"> 
+            <Picker.Items>
+                <!-- admin нельзя-->
+                <x:String>Manager</x:String>
+                <x:String>Developer</x:String>
+                <x:String>Tester</x:String>
+                <x:String>Designer</x:String>
+            </Picker.Items>
+        </Picker>
+        <Button x:Name="Add" Text="Add user" Clicked="Add_Clicked" BackgroundColor="DarkSeaGreen"
+                                               FontSize="{DynamicResource AppFontSize}"></Button>
 
-        </StackLayout>
-    </ContentPage.Content>
+    </StackLayout>
 </ContentPage>

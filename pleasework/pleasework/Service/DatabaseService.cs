@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Firebase.Database;
 using Firebase.Database.Query;
 using pleasework.Models;
-using Newtonsoft.Json;
-using pleasework.Enums;
 using Task = System.Threading.Tasks.Task;
 
 namespace pleasework.Service
@@ -53,7 +50,7 @@ namespace pleasework.Service
         {
             await FirebaseClient.Child(nameof(Task)).PostAsync(task);
         }
-
+        
         public static async Task<List<Models.Task>> GetAllTasks()
         {
             return (await FirebaseClient
@@ -65,15 +62,30 @@ namespace pleasework.Service
                      Deadline = x.Object.Deadline,
                      Performer = x.Object.Performer,
                      Priority = x.Object.Priority,
-                     ForRole = x.Object.ForRole
+                     ForRole = x.Object.ForRole,
+                     Creator = x.Object.Creator,
+                     IsDone = x.Object.IsDone
                  }).ToList();
         }
 
-
-
-        public static async void DeleteTask(Task task)
+        public static async void DeleteTask(Models.Task task)
         {
-            await FirebaseClient.Child(nameof(Task)).DeleteAsync(); // ?????
+            var toDeleteTask = (await FirebaseClient
+                 .Child(nameof(Task))
+                 .OnceAsync<Models.Task>()).FirstOrDefault(a => a.Object.Title == task.Title && a.Object.Description ==task.Description && 
+                                                                a.Object.Deadline == task.Deadline);
+
+            if (toDeleteTask != null)
+            {
+                await FirebaseClient.Child(nameof(Task)).Child(toDeleteTask.Key).DeleteAsync();
+            }
+        }
+
+        public static void UpdateTask(Models.Task task)
+        {
+            DeleteTask(task);
+            task.IsDone = !task.IsDone;
+            AddTask(task);
         }
 
         /*public static async Task<Role> AddRole(Role role)
